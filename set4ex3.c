@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
-#define N 10000 //komboi
-#define run 3 //plhthos epanalhpsewn logw gamma
+#define N 10000 //nodes
+#define run 3 //runs
 
 double y(double g,double ymin, double ymax, double x)
 {
@@ -27,13 +27,13 @@ int main()
       else if (g==2.5) data=fopen("net3kgamma2.5.txt","w");
       else data=fopen("net3kgamma3.0.txt","w"); //epilogh arxeiou
 
-      int *k=malloc(N*sizeof(int)); //pinakas syndesewn kathe kombou
+      int *k=malloc(N*sizeof(int)); //Edges' matrix for every node
       for (i=0;i<N;i++) k[i]=0;
 
       for (i=0;i<N;i++)
 	{
 	  x=1.0*rand()/RAND_MAX;
-	  k[i]=floor(y(g,ymin,ymax,x)); //pws na dwsw timh apo ton pinaka gamma?
+	  k[i]=floor(y(g,ymin,ymax,x));
 	  fprintf(data,"%d\t%d\n",i,k[i]);
 	}
 
@@ -46,11 +46,11 @@ int main()
       kmax=kmax+1;
       int *distribution=malloc(kmax*sizeof(int));
 
-      for (i=0;i<kmax;i++) //gia na mh xanetai to teleytaio
-	distribution[i]=0; //Arxikopoihsh
+      for (i=0;i<kmax;i++)
+	distribution[i]=0; //Initialization
 
       for (i=0;i<N;i++)
-	distribution[k[i]]++ ; //briskw to plhthos kathe k
+	distribution[k[i]]++ ;
 
       if (g==2.0) datad=fopen("net3kgamma2.0D.txt","w");
       else if (g==2.5) datad=fopen("net3kgamma2.5D.txt","w");
@@ -65,5 +65,5 @@ int main()
       fclose(datad);
       free(distribution);
       free(k);
-    }//telos run gia ta 3 gamma
+    }
 }
