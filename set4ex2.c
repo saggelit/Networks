@@ -1,9 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
-#define N 1000 //komboi
-#define k 14000 //synolo syndeswn
-#define p 0.2 //pithanothta
+#define N 1000 //nodes
+#define k 14000 //total edges
+#define p 0.2 //probability
 
 int main()
 {
@@ -31,23 +31,23 @@ int main()
     {
       for (j=i+1;j<N;j++)
 	{
-	  if (j<=i+k/N/2) // gia syndesh dexia
+	  if (j<=i+k/N/2)
 	    {
 	      network[i][j]=1;
-	      //network[j][i]=1; //gia ton katw symmetriko
+	      //network[j][i]=1;
 	      links[i]++;
 	      links[j]++;
 	    }
-	  else if (j>=i+N-k/N/2)  // gia syndesh aristera
+	  else if (j>=i+N-k/N/2)
 	    {
 	      network[i][j]=1;
-	      //network[j][i]=1; //gia ton katw symmetriko
+	      //network[j][i]=1;
 	      links[i]++;
 	      links[j]++;
 	    }
 	}
     }
-  /*  //Gia na dw to arxiko plegma
+  /*  //To see the initial lattice
   for (i=0;i<N;i++)
     {
       for (j=0;j<N;j++)
@@ -78,10 +78,8 @@ int main()
 		}
 	      while (node==i || node==j);
 	      network[i][j]=0;
-	      //network[j][i]=0; //gia ton katw symmetriko //Gt de mpainoyn swsta oi komboi?
 	      if (i<node) network[i][node]=1;
 	      else network[node][i]=1;
-	      //network[node][i]=1; //gia ton katw symmetriko
 	      links[node]++;
 	      links[j]--;
 	    }
