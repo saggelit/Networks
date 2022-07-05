@@ -1,9 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
-#define N 10000 //komboi 1000 kai 10000
-#define p 1.0/6 //pithanothta
-#define run 1000 //plhthos prosomoiwsewn
+#define N 10000 //nodes 1000 & 10000
+#define p 1.0/6 //probability
+#define run 1000 //runs
 
 
 int main()
@@ -25,7 +25,7 @@ int main()
       datad=fopen("net1d10000.txt","w");
     }
   
-  int *k=malloc(N*sizeof(int)); //pinakas syndesewn kathe kombou
+  int *k=malloc(N*sizeof(int)); //matrix of edges for every node
   for (i=0;i<N;i++) k[i]=0;
  
   for (n=0;n<run;n++)
@@ -44,7 +44,6 @@ int main()
  	}
     }
 
-  //for (i=0;i<N;i++) k[i]=k[i]/run; //me ayth th diairesh edw bgazw tria bins
   
   kmax=0;
   for (i=0;i<N;i++)
